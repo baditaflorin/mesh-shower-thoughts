@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { useEventLog, useNamedPeer, type MeshConfig, type YRoom } from "@baditaflorin/mesh-common";
+import {
+  MeshNameInput,
+  useEventLog,
+  useNamedPeer,
+  type MeshConfig,
+  type YRoom,
+} from "@baditaflorin/mesh-common";
 
 type Props = { room: YRoom | null; config: MeshConfig };
 
@@ -74,15 +80,13 @@ function Body({ room, config }: { room: YRoom; config: MeshConfig }) {
         <p className="shower-status">drop one, vote on the rest</p>
       </header>
 
-      <div className="shower-name">
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="your name"
-          maxLength={48}
-          aria-label="your name"
-        />
-      </div>
+      <MeshNameInput
+        className="shower-name"
+        value={name}
+        onChange={setName}
+        placeholder="your name"
+        maxLength={48}
+      />
 
       <div className="shower-compose">
         <textarea
